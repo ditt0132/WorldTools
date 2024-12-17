@@ -80,7 +80,7 @@ open class CustomRegionBasedStorage internal constructor(
                 runCatching {
                     val block = Registries.BLOCK.get(blockStateIdentifier)
                     Registries.BLOCK_ENTITY_TYPE
-                        .getOrEmpty(blockStateIdentifier)
+                        .getOptionalValue(blockStateIdentifier)
                         .orElse(null)
                         ?.instantiate(blockPos, block.defaultState)?.apply {
                             read(compoundTag, world.registryManager)
